@@ -14,3 +14,43 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+// .button-ios-primary,
+// .button-md-primary {
+//     text-transform: uppercase;
+
+// }
+
+// form .item {
+//     padding-left: 16px;
+//     padding-right: 16px;
+// }
+
+button.button {
+    background: #8A2387;
+    background: -webkit-gradient(linear, left top, right top, from(#F27121), color-stop(#E94057), to(#8A2387));
+    background: linear-gradient(to right, #F27121, #E94057, #8A2387);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    height: 40px;
+    font-size: 14px;
+    font-family: 'Roboto',sans-serif;
+    margin: 10px 0;
+    border-radius: 3px;
+}
+
+::-webkit-input-placeholder { /* Edge */
+    color: #010101;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #010101;
+  }
+  
+  ::placeholder {
+    color: #010101;
+  }
