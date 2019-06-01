@@ -1,6 +1,8 @@
 {
   "name": "WMN",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "id": "f11089fe"
 }

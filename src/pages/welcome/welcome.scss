@@ -45,6 +45,19 @@ page-welcome {
   }
 }
 
+page-welcome .splash-bg {
+  position: relative;
+  background-size: 70% auto;
+  height: 45%;
+  z-index: 1;
+  background-repeat: repeat-x;
+  /* -webkit-animation: animatedBackground 40s linear infinite; */
+  /* animation: animatedBackground 40s linear infinite; */
+  background-image: url(https://media.giphy.com/media/FCN21pfHjOZeE/giphy.gif);
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
 page-welcome button.login,
 page-welcome button.signup {
   background: #8A2387;
