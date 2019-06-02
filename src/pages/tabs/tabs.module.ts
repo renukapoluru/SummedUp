@@ -12,8 +12,5 @@ import { TabsPage } from './tabs';
     IonicPageModule.forChild(TabsPage),
     TranslateModule.forChild()
   ],
-  exports: [
-    TabsPage
-  ]
 })
 export class TabsPageModule { }

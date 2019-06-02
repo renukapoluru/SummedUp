@@ -11,21 +11,9 @@
 </ion-header>
 
 <ion-content padding>
-<form>
-  <ion-list>
-    <ion-item>
-      <ion-label fixed>Home</ion-label>
-      <ion-input type="number" [(ngModel)]="pref.home" name="home"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label fixed>Work</ion-label>
-      <ion-input type="number" [(ngModel)]="pref.work" name="work"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label fixed>Outside</ion-label>
-      <ion-input type="number" [(ngModel)]="pref.outside" name="outside"></ion-input>
-    </ion-item>
-  </ion-list>
-</form>
+ 
+<p><b>Home:</b> <span> {{ homeHours }} Minutes</span></p>
+<p><b>Work:</b> <span> {{ workHours }} Minutes</span></p>
+<p><b>Others:</b> <span> {{ otherHours }} Minutes</span> </p>
 <button (click)="getNew()">Click Me!</button>
 </ion-content>

@@ -1,48 +1,75 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{ 'CARDS_TITLE' | translate }}</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content>
-
-  <ion-card *ngFor="let item of cardItems">
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img [src]="item.user.avatar">
-      </ion-avatar>
-      <h2>{{item.user.name}}</h2>
-      <p>{{item.date}}</p>
-    </ion-item>
-
-    <img [src]="item.image">
-
-    <ion-card-content>
-      <p>{{item.content}}</p>
-    </ion-card-content>
-
+    <ion-navbar>
+      <ion-title>Set your Hours</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content *ngIf='cardItems'>
+    <ion-card class="mar-top">
+      <ion-row>
+          <ion-col>
+            <div class="card-align">
+              <img class="card-icon" src="assets/img/home.png">
+            </div>  
+          </ion-col>
+          <ion-col>
+              <div class="card-align">
+                Home
+              </div>  
+          </ion-col>  
+          <ion-col>
+            <div class="card-align">
+              <ion-input type="number" [(ngModel)]="cardItems.home_pref" required="true" clearInput=true min="0" max="24"></ion-input>    
+            </div>
+          </ion-col>
+      </ion-row> 
+    </ion-card>
+    <ion-card>
+      <ion-row>
+        <ion-col>
+            <div class="card-align">
+              <img class="card-icon" src="assets/img/work.png">
+            </div>  
+        </ion-col>
+        <ion-col>
+            <div class="card-align">
+              Work
+            </div>  
+        </ion-col>  
+        <ion-col>
+            <div class="card-align">
+              <ion-input type="number" [(ngModel)]="cardItems.work_pref" required="true" clearInput=true min="0" max="24"></ion-input>  
+            </div>
+        </ion-col> 
+      </ion-row>  
+    </ion-card> 
+    <ion-card> 
+      <ion-row>
+        <ion-col>
+          <div class="card-align">
+              <img class="card-icon" src="assets/img/other.png">
+          </div>
+          </ion-col>
+          <ion-col>
+              <div class="card-align">
+                Other
+              </div>  
+          </ion-col>  
+          <ion-col>
+            <div class="card-align">
+              <ion-input type="number" [(ngModel)]="cardItems.other_pref" required="true" clearInput=true min="0" max="24"></ion-input>  
+            </div>
+          </ion-col>
+      </ion-row> 
+    </ion-card>    
     <ion-row>
-      <ion-col>
-        <button ion-button color="primary" clear small icon-start>
-            <ion-icon name='thumbs-up'></ion-icon>
-            12 Likes
-          </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button color="primary" clear small icon-start>
-            <ion-icon name='text'></ion-icon>
-            4 Comments
-          </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
+      <ion-col class="pad-around">
+        <button ion-button block class="button-positive" (click)="editPreference()">Edit</button>
+        <button ion-button block class="button-positive" (click)="deletePreference()">Reset</button>
+        <div class="spinner-align"><ion-spinner *ngIf="showLoader" name="bubbles" color="primary"></ion-spinner></div>
       </ion-col>
     </ion-row>
-  </ion-card>
-</ion-content>
+  </ion-content>
