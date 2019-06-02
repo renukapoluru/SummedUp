@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Chart } from 'chart.js';
 
 @IonicPage()
 @Component({
@@ -29,9 +30,13 @@ export class ListMasterPage {
   homeHours = 0;
   workHours = 0;
   otherHours = 0;
+  @ViewChild('doughnutCanvas') doughnutCanvas;
+  doughnutChart: any;
+  sum;
   constructor(private http: HttpClient, public navCtrl: NavController, public navParams: NavParams) {
 
   }
+
 
   ngOnInit() {
     this.getCurrentHours();
@@ -56,23 +61,67 @@ export class ListMasterPage {
   }
 
   getCurrentHours() {
-    // var dateFormat = require('dateformat');
-    // var now = new Date();
-    // console.log(now);
-    // this.http.post(`https://summedupwmn.herokuapp.com/v1/graphql`, 
-    // { query: `{\n  usersdatetime(where: {date: {_eq: ${now}}, homeHours: {}, workHours: {}}) {\n    workHours\n    homeHours\n  }\n}\n`}
-    // ).subscribe(
-    //   val => {
-    //     console.log('Value', val);
-    //     this.callAPI();
-    //   },
-    //   response => {
-    //     console.log('Response', response);
-    //   },
-    //   () => {
-    //     console.log('Check!');
-    //   }
-    // );
+    var now = new Date();
+    console.log(now);
+    this.http.post(`https://summedup-wmn.herokuapp.com/v1/graphql`, 
+    {query: `{\n  usersdatetime(where: {record_date: {_eq: "02/6/19"}}) {\n    homeHours\n    record_date\n    workHours\n		otherHours\n  }\n}\n`}
+    ).subscribe(
+      val => {
+        const dateData:any = val;
+        const hoursSpent = dateData.data.usersdatetime[0];
+        if(dateData.data.usersdatetime.length !== 0 ) {
+          this.homeHours = hoursSpent.homeHours;
+          this.workHours = hoursSpent.workHours;
+          this.otherHours = hoursSpent.otherHours;
+          this.loadChartData();
+        }
+        this.callAPI();
+      },
+      response => {
+        console.log('Response', response);
+      },
+      () => {
+        console.log('Check!');
+      }
+    );
+  }
+
+  async loadChartData() {
+    this.sum = this.homeHours + this.workHours + this.otherHours;
+    const val1 = Math.floor((this.homeHours/this.sum)*100);
+    const val2 = Math.floor((this.workHours/this.sum)*100);
+    const val3 = Math.floor((this.otherHours/this.sum)*100);
+    const percentages = [];
+    percentages.push(val1);
+    percentages.push(val2);
+    percentages.push(val3);
+    console.log(percentages);
+    this.loadChart(percentages)
+  }
+  
+  loadChart(data) {  
+      this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+      type: 'doughnut',
+      data: {
+          labels: ["Home", "Work", "Other"],
+          datasets: [{
+              label: '# of Votes',
+              data: data,
+              backgroundColor: [
+                  'rgba(255, 99, 132)',
+                  'rgba(54, 162, 235)',
+                  'rgba(255, 206, 86)'
+              ],
+              hoverBackgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ]
+          }]
+      }
+
+  });
+
   }
 
   callAPI() { 
@@ -115,6 +164,19 @@ export class ListMasterPage {
             },
             response => {
                 console.log("Server Responded With", response);
+            },
+            () => {
+              this.http.post('https://summedup-wmn.herokuapp.com/v1/graphql', { query: `mutation {\n  update_usersdatetime(_set: {otherHours: ${this.otherHours}, homeHours: ${this.homeHours}, workHours: ${this.workHours}}, where: {record_date: {_eq: "02/06/19"}}) {\n    returning {\n      homeHours\n      otherHours\n      workHours\n      record_date\n    }\n  }\n}\n`}).subscribe(
+                val => {
+                  console.log(val);
+                },
+                response => {
+                  console.log(response);
+                },
+                () => {
+                  console.log('Safe');
+                }
+              );
             }
         );
   }

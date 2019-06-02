@@ -5,8 +5,12 @@
   </ion-header>
   
   <ion-content padding>
-   
-  <p><b>Home:</b> <span> {{ homeHours }} Minutes</span></p>
-  <p><b>Work:</b> <span> {{ workHours }} Minutes</span></p>
-  <p><b>Others:</b> <span> {{ otherHours }} Minutes</span> </p>
-  </ion-content>
+  <div *ngIf='!homeHours && !workHours && !otherHours'>
+      <img src='assets/img/empty.gif' />
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <canvas #doughnutCanvas height="300"></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
