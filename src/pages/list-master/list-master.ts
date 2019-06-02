@@ -73,7 +73,6 @@ export class ListMasterPage {
           this.homeHours = hoursSpent.homeHours;
           this.workHours = hoursSpent.workHours;
           this.otherHours = hoursSpent.otherHours;
-          debugger;
           this.loadChartData();
         }
         this.callAPI();
@@ -88,7 +87,6 @@ export class ListMasterPage {
   }
 
   async loadChartData() {
-    debugger;
     this.sum = this.homeHours + this.workHours + this.otherHours;
     const val1 = Math.floor((this.homeHours/this.sum)*100);
     const val2 = Math.floor((this.workHours/this.sum)*100);
@@ -98,19 +96,18 @@ export class ListMasterPage {
     percentages.push(val2);
     percentages.push(val3);
     console.log(percentages);
-    this.loadChart(percentages)
+    this.loadChart(percentages);
   }
   
-  loadChart(data) {  
-
-    debugger;
+  loadChart(getdata) { 
+      console.log('after per', getdata); 
       this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: 'doughnut',
       data: {
           labels: ["Home", "Work", "Other"],
           datasets: [{
               label: '# of Votes',
-              data: data,
+              data: getdata,
               backgroundColor: [
                   'rgba(255, 99, 132)',
                   'rgba(54, 162, 235)',

@@ -13,7 +13,7 @@
   <div>
       <canvas #doughnutCanvas height="300"></canvas>
   </div>
-  <div class="suggestion" *ngIf='workHours > homeHours && workHours > otherHours'>
+  <div class="suggestion" *ngIf='(workHours > homeHours) && (workHours > otherHours)'>
     <div class="outside-activity">
       <p> You seem to be spending less time around. How about some #metime?</p>
       <ion-row>
@@ -45,7 +45,7 @@
   </div>
   <div class="suggestion" *ngIf='otherHours > homeHours &&  otherHours > workHours '>
       <div class="outside-activity">
-        <p> You seem to be getting busier at home. How about getting some help?</p>
+        <p> You seem to be interested in outdoor activities. How about some more activities?</p>
         <ion-row>
           <ion-col class="text-center">
               <a href="https://www.udemy.com/topic/gardening/" class="link-btn">Learn Gardening</a>

@@ -22,6 +22,7 @@ export class SettingsPage {
   settingsReady = false;
 
   form: FormGroup;
+  prefsForm: FormGroup;
 
   profileSettings = {
     page: 'profile',

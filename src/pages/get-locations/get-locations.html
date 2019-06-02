@@ -42,8 +42,9 @@
         </ion-col>  
       </ion-row>  
     </form>
+    <img id="thankyou" src="assets/img/thankyou.png" alt="Thank You" />
     <ion-list *ngIf="homeChosenLocation && workChosenLocation">
-      <p>Thank you so much. Let's build a quality life together.</p>
+      <p class="thank-you">Thank you so much. Let's build a quality life together.</p>
       <button class="next" (click)="navigate()" ion-button color="primary">Next</button>
     </ion-list>
 </ion-content>
