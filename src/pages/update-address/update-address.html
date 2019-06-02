@@ -5,33 +5,46 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
-      <ion-title>Update Locations</ion-title>
+    <ion-navbar class="text-center">
+      <ion-title>Summedup</ion-title>
     </ion-navbar>
   </ion-header>
   
   <ion-content padding>
+    <h3 class="text-center">Update Locations</h3>
       <form [formGroup]="locationsForm" class="location-form">
-          <div class="home-location">
-            <input  
-              id="search" placeholder="Type your Home Address" type="text" 
-              class="form-control" formControlName="searchString" name="home" required
-            >
-            <ul class="search-list" *ngIf="homeLocations">
-                <li *ngFor="let item of homeLocations" (click)="chooseHome(item)"> {{ item }}</li>
-            </ul>
-            <span class="error-msg" *ngIf="noLocationsHouseMsg">No Loctions found with the address.</span>
-          </div>
-          <div class="work-location">
-              <input  
-                id="search" placeholder="Type your Work Address" type="text" 
-                class="form-control" formControlName="workLocation" name="work" required
-              >
-              <ul class="search-list" *ngIf="workLocations">
-                  <li *ngFor="let item of workLocations" (click)="chooseWork(item)"> {{ item }}</li>
-              </ul>
-              <span class="error-msg" *ngIf="noLocationsWorkMsg">No Loctions found with the address.</span>
-          </div>
+        <ion-row>
+          <ion-col>
+              <div class="home-location">
+                <img src="assets/img/home.png" class="card-icon"/>
+                <label for="homeSearch"></label>
+                <input  
+                  id="homeSearch" placeholder="Home address goes here..." type="text" 
+                  class="form-control search-btn" formControlName="searchString" name="home" required
+                >
+                <ul class="search-list" *ngIf="homeLocations">
+                    <li *ngFor="let item of homeLocations" (click)="chooseHome(item)"> {{ item }}</li>
+                </ul>
+                <span class="error-msg" *ngIf="noLocationsHouseMsg">No Loctions found with the address.</span>
+              </div>
+          </ion-col> 
+        </ion-row>  
+        <ion-row>
+          <ion-col>
+              <div class="work-location">
+                  <img src="assets/img/work.png" class="card-icon"/>
+                  <label for="workSearch"></label>
+                  <input  
+                    id="workSearch" placeholder="Work address goes here..." type="text" 
+                    class="form-control search-btn" formControlName="workLocation" name="work" required
+                  >
+                  <ul class="search-list" *ngIf="workLocations">
+                      <li *ngFor="let item of workLocations" (click)="chooseWork(item)"> {{ item }}</li>
+                  </ul>
+                  <span class="error-msg" *ngIf="noLocationsWorkMsg">No Loctions found with the address.</span>
+              </div> 
+          </ion-col>  
+        </ion-row>  
       </form>
       <ion-list *ngIf="homeChosenLocation && workChosenLocation">
         <h3>Hurray! Process complete. Let's rock it.</h3>

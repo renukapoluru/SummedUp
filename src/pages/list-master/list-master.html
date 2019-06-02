@@ -1,16 +1,61 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>Summary</ion-title>
+    <ion-navbar class="text-center">
+      <ion-title>Summedup</ion-title>
     </ion-navbar>
   </ion-header>
   
   <ion-content padding>
+  <h3 class="text-center">
+    Time analysis</h3>
   <div *ngIf='!homeHours && !workHours && !otherHours'>
       <img src='assets/img/empty.gif' />
   </div>
-  <ion-card>
-    <ion-card-content>
+  <div>
       <canvas #doughnutCanvas height="300"></canvas>
-    </ion-card-content>
-  </ion-card>
+  </div>
+  <div class="suggestion" *ngIf='workHours > homeHours && workHours > otherHours'>
+    <div class="outside-activity">
+      <p> You seem to be spending less time around. How about some #metime?</p>
+      <ion-row>
+        <ion-col class="text-center">
+            <a href="www.urbanclap.com" class="link-btn">Book A Salon</a>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="text-center">
+          <a href="https://in.bookmyshow.com/bengaluru" class="link-btn">Go for Movie</a>
+        </ion-col>
+      </ion-row>  
+    </div>
+  </div>
+  <div class="suggestion" *ngIf='homeHours > otherHours && homeHours > workHours '>
+      <div class="outside-activity">
+        <p> You seem to be getting busier at home. How about getting some help?</p>
+        <ion-row>
+          <ion-col class="text-center">
+              <a href="www.care.com/" class="link-btn">Book A Nanny</a>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="text-center">
+            <a href="www.care.com" class="link-btn">Book a Tutor</a>
+          </ion-col>
+        </ion-row>  
+      </div>
+  </div>
+  <div class="suggestion" *ngIf='otherHours > homeHours &&  otherHours > workHours '>
+      <div class="outside-activity">
+        <p> You seem to be getting busier at home. How about getting some help?</p>
+        <ion-row>
+          <ion-col class="text-center">
+              <a href="https://www.udemy.com/topic/gardening/" class="link-btn">Learn Gardening</a>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="text-center">
+            <a href="https://www.udemy.com/topic/cooking/" class="link-btn">Learn cooking</a>
+          </ion-col>
+        </ion-row>  
+      </div>
+  </div>
 </ion-content>

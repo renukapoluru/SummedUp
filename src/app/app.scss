@@ -26,6 +26,10 @@
 //     padding-right: 16px;
 // }
 
+body{
+  background:white; 
+}
+
 button.button {
   background:#3880ff;
   color: #fff;
@@ -49,4 +53,21 @@ button.button {
 
 ::placeholder {
   color: #010101;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.mar-top{
+  margin-top: 40px;
+}
+
+.link-btn{
+  text-decoration: none;
+    padding: 9px 10px;
+    background: #3880ff;
+    color: white;
+    border-radius: 4px;
+    display: block;
 }
