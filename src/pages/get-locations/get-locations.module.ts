@@ -12,7 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GetLocationsPage
   ]
 })
 export class GetLocationsPageModule {}

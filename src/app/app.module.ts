@@ -14,6 +14,8 @@ import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { GetLocationsPage } from '../pages/get-locations/get-locations';
+import { GetLocationsPageModule } from '../pages/get-locations/get-locations.module';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -38,7 +40,7 @@ export function provideSettings(storage: Storage) {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     BrowserModule,
@@ -52,12 +54,14 @@ export function provideSettings(storage: Storage) {
     }),
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    TabsPageModule
+    TabsPageModule,
+    GetLocationsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabsPage
+    TabsPage,
+    GetLocationsPage
   ],
   providers: [
     Api,

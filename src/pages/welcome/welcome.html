@@ -1,13 +1,18 @@
-<ion-content scroll="false">
-  <div class="splash-bg"></div>
-  <div class="splash-info">
-    <div class="splash-logo"></div>
-    <div class="splash-intro">
-      SummedUp.
+<div class="welcome-main text-center">
+    <img src="assets/img/welcome-bg.jpg" />
+    <div class="content">
+      <h3 id="logo"><img src="assets/img/time.png" />SummedUp.</h3>
+      <p>Improving the quality of life.</p>
+      <p id="quote"><span>"</span>I walk around like everything is fine, but deep down inside my shoe, my sock is sliding off.<span>"</span></p>
     </div>
-  </div>
+    <button ion-button class="welcome-button" (click)="navigate()">Next</button>
+</div>
+
+<!-- <ion-content padding class="welcome-main" scroll="false">
+  
+      
   <div padding>
     <button ion-button block (click)="signup()" class="signup">{{ 'SIGNUP' | translate }}</button>
     <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
   </div>
-</ion-content>
+</ion-content> -->

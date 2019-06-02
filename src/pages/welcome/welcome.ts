@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { GetLocationsPage } from '../get-locations/get-locations';
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -22,5 +23,9 @@ export class WelcomePage {
 
   signup() {
     this.navCtrl.push('SignupPage');
+  }
+
+  navigate() {
+    this.navCtrl.push(GetLocationsPage);
   }
 }

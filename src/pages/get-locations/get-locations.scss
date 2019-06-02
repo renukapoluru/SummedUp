@@ -3,9 +3,21 @@ page-get-locations {
 }
 
 .location-form input {
-    padding: 15px 15px;
+    padding: 15px 15px 15px 45px;
     width: 100%;
     border: 1px solid #e1e1e1;
+}
+
+.location-form-row.row {
+    flex-direction: column;
+}
+
+.home-location img,
+.work-location img {
+    max-width: 25px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
 }
 
 ul.search-list {

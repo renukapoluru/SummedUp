@@ -30,6 +30,10 @@ body{
   background:white; 
 }
 
+.ion-page {
+  background: #fff;
+}
+
 button.button {
   background:#3880ff;
   color: #fff;
@@ -41,6 +45,7 @@ button.button {
   font-family: 'Roboto',sans-serif;
   margin: 10px 0;
   border-radius: 3px;
+  text-transform: uppercase;
 }
 
 ::-webkit-input-placeholder { /* Edge */
@@ -65,9 +70,15 @@ button.button {
 
 .link-btn{
   text-decoration: none;
-    padding: 9px 10px;
+    padding: 13px 10px;
     background: #3880ff;
     color: white;
     border-radius: 4px;
     display: block;
+}
+
+button.next {
+  display: block;
+  padding: 10px 45px;
+  margin: 20px auto 0;
 }

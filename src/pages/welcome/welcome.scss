@@ -75,3 +75,45 @@ page-welcome button.signup {
   margin: 10px 0;
   border-radius: 3px;
 }
+
+.welcome-main .content {
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.welcome-main .content p#quote {
+  font-size: 12px;
+  line-height: 1.5;
+  margin:25px 0 0;
+}
+
+.welcome-main .content p#quote span {
+  font-size: 14px;
+  font-family: 'Times New Roman', sans-serif;
+}
+
+.welcome-main .content h3 {
+  font-weight: 900;
+  margin: 20px 0 10px;
+  font-size:24px;
+}
+
+.welcome-main .content p {
+  margin: 5px 0 0;
+}
+
+h3#logo img {
+  vertical-align: middle;
+  display: inline-block;
+  max-width: 45px;
+  margin-right: 1px;
+  position: relative;
+  top: -3px;
+}
+
+
+button.welcome-button {
+    display: block;
+    padding: 10px 45px;
+    margin: 20px auto 0;
+}

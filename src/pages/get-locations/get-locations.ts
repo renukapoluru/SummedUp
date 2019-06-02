@@ -93,6 +93,8 @@ export class GetLocationsPage {
     this.http.get(`https://geocoder.api.here.com/6.2/geocode.json?searchtext=${locationAddress}&app_id=KJD5CFq6IOliojNRr4fb&app_code=zkTv9Gi4DVjxmihZik2V1w&gen=9`)
     .subscribe(
       val => {
+        console.log('Fetching API with Here');
+        console.log(val);
         this.homeChosenLocation = val;
       },
       response => {
@@ -112,6 +114,10 @@ export class GetLocationsPage {
     .subscribe(
       val => {
         this.workChosenLocation = val;
+        console.log(this.homeChosenLocation, this.workChosenLocation);
+        this.http.post('https://summedup-wmn.herokuapp.com/v1/graphql', {
+          query: `mutation {\n  insert_users(objects: {homeLocation: ${this.homeChosenLocation}, workLocation: ${this.workChosenLocation}, otherPref: 0, homePref: 0, user_id: 1, workPref: 0}) {\n    returning {\n      homeLocation\n      homePref\n      otherPref\n      user_id\n      workLocation\n      workPref\n    }\n  }\n}\n`
+        }).subscribe(val => {console.log('Address Inserted');});
       },
       response => {
         console.log('Response', response);

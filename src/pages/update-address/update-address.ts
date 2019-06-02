@@ -109,6 +109,9 @@ export class UpdateAddressPage {
     .subscribe(
       val => {
         this.workChosenLocation = val;
+        this.http.post('https://summedup-wmn.herokuapp.com', {
+          query: `mutation {\n  update_users(where: {user_id: {_eq: 1}}, _set: {homeLocation: ${this.homeChosenLocation}, workLocation: ${this.workChosenLocation}}) {\n    returning {\n      homeLocation\n      homePref\n      otherPref\n      user_id\n      workLocation\n      workPref\n    }\n  }\n}\n`
+        }).subscribe(val => {console.log('Address Updated');});
       },
       response => {
         console.log('Response', response);
