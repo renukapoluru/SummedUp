@@ -73,6 +73,7 @@ export class ListMasterPage {
           this.homeHours = hoursSpent.homeHours;
           this.workHours = hoursSpent.workHours;
           this.otherHours = hoursSpent.otherHours;
+          debugger;
           this.loadChartData();
         }
         this.callAPI();
@@ -87,6 +88,7 @@ export class ListMasterPage {
   }
 
   async loadChartData() {
+    debugger;
     this.sum = this.homeHours + this.workHours + this.otherHours;
     const val1 = Math.floor((this.homeHours/this.sum)*100);
     const val2 = Math.floor((this.workHours/this.sum)*100);
@@ -100,6 +102,8 @@ export class ListMasterPage {
   }
   
   loadChart(data) {  
+
+    debugger;
       this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: 'doughnut',
       data: {

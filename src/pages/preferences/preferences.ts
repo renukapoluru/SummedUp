@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { IonicPage } from 'ionic-angular';
 
 /**
  * Generated class for the PreferencesPage page.
