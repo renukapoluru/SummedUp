@@ -1,4 +1,4 @@
-<ion-header>
+  <ion-header>
     <ion-navbar>
       <ion-title>Summary</ion-title>
     </ion-navbar>
@@ -9,4 +9,13 @@
   <p><b>Home:</b> <span> {{ homeHours }} Minutes</span></p>
   <p><b>Work:</b> <span> {{ workHours }} Minutes</span></p>
   <p><b>Others:</b> <span> {{ otherHours }} Minutes</span> </p>
+
+    <ion-card>
+      <ion-card-header>
+        Doughnut Chart
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvas height="300"></canvas>
+      </ion-card-content>
+    </ion-card>
   </ion-content>

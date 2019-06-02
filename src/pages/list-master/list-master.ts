@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Chart } from 'chart.js';
 
 @IonicPage()
 @Component({
@@ -29,9 +30,38 @@ export class ListMasterPage {
   homeHours = 0;
   workHours = 0;
   otherHours = 0;
+  @ViewChild('doughnutCanvas') doughnutCanvas;
+  doughnutChart: any;
   constructor(private http: HttpClient, public navCtrl: NavController, public navParams: NavParams) {
 
   }
+
+  ionViewDidLoad() {
+
+    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+
+        type: 'doughnut',
+        data: {
+            labels: ["Home", "Work", "Other"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)'
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        }
+
+    });
+
+}
 
   ngOnInit() {
     this.getCurrentHours();
